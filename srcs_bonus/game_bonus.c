@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frame.c                                            :+:      :+:    :+:   */
+/*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/30 19:19:26 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/27 16:52:05 by cdapurif         ###   ########.fr       */
+/*   Created: 2021/09/08 18:52:03 by cdapurif          #+#    #+#             */
+/*   Updated: 2021/10/27 16:25:31 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
-void	render(t_info *info)
+void	quit_game(t_info *info)
 {
-	display_background(info);
-	generate_3d_proj(info);
-	mlx_put_image_to_window(info->mlx_ptr, info->window_ptr, info->image, 0, 0);
-}
-
-void	update(t_info *info)
-{
-	clear_image(info);
-	move_player(info);
-	cast_all_rays(info);
+	ft_putstr_fd("Goodbye ! hope we'll see you soon\n", 1);
+	free_info(info);
+	exit(EXIT_SUCCESS);
 }
