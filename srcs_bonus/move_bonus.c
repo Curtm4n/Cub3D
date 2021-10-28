@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:09:58 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/27 16:22:05 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/10/28 19:04:11 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	is_wall(t_info *info, float x, float y)
 		return (true);
 	map_x = floor(x / info->tile_size);
 	map_y = floor(y / info->tile_size);
-	return (info->map[map_y][map_x] == '1');
+	return (info->map[map_y][map_x] == '1' || info->map[map_y][map_x] == ' ');
 }
 
 void	move_side(t_info *info, t_player *p, float move_step)

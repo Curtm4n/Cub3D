@@ -6,11 +6,21 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 21:12:15 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/21 21:50:11 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/10/28 17:34:55 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	check_limits(t_info *info, char **map, int x, int y)
+{
+	if ((x >= ft_strlen(map[y - 1]) || x >= ft_strlen(map[y + 1])) && \
+		map[y][x] == '_')
+	{
+		free(map);
+		parsing_error(NULL, info);
+	}
+}
 
 bool	is_inside_map(t_info *info, float x, float y)
 {

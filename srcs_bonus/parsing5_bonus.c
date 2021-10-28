@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 17:52:14 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/27 16:22:31 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/10/28 17:36:16 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void	check_borders(t_info *info, char **map, int x, int y)
 		free(map);
 		parsing_error(NULL, info);
 	}
+	check_limits(info, map, x, y);
 }

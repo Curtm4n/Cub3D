@@ -6,7 +6,7 @@
 /*   By: curtman <cdapurif@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 20:31:50 by curtman           #+#    #+#             */
-/*   Updated: 2021/10/27 16:52:35 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:58:33 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,5 +208,7 @@ void			place_texture(t_info *info, struct s_text_info data, \
 t_texture		*find_good_texture(t_info *info, int x);
 bool			is_inside_map(t_info *info, float x, float y);
 void			draw_line(t_info *info, int i, float x0, float y0);
+void			check_limits(t_info *info, char **map, int x, int y);
+unsigned char	get_color(char *line, t_info *info, int i);
 
 #endif

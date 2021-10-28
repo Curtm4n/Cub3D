@@ -6,7 +6,7 @@
 #    By: curtman <cdapurif@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 20:12:41 by curtman           #+#    #+#              #
-#    Updated: 2021/10/27 16:17:22 by cdapurif         ###   ########.fr        #
+#    Updated: 2021/10/28 19:29:24 by cdapurif         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS =	cub3d.c \
 		utils.c \
 		utils2.c \
 		utils3.c \
+		utils4.c \
 		graphics.c \
 		move.c \
 		raycasting.c \
@@ -57,6 +58,7 @@ SRCS_BONUS =	cub3d_bonus.c \
 				utils_bonus.c \
 				utils2_bonus.c \
 				utils3_bonus.c \
+				utils4_bonus.c \
 				graphics_bonus.c \
 				move_bonus.c \
 				raycasting_bonus.c \

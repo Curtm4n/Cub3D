@@ -6,32 +6,31 @@
 /*   By: cdapurif <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:10:00 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/04/22 18:32:47 by curtman          ###   ########.fr       */
+/*   Updated: 2021/10/28 18:51:59 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
 	int	i;
 	int	nb;
-	int	sign;
 
 	i = 0;
 	nb = 0;
-	sign = 1;
-	while (str[i] == 32 || str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
-		|| str[i] == '\f' || str[i] == '\v')
+	while (ft_iswhitespace(str[i]))
 		i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (-1);
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (str[i] == '-')
-			sign = -1;
+		nb = nb * 10 + str[i] - '0';
 		i++;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		nb = nb * 10 + str[i] - 48;
+	while (ft_iswhitespace(str[i]))
 		i++;
-	}
-	return (sign * nb);
+	if (str[i] != ',' && str[i] != '\0')
+		return (-1);
+	return (nb);
 }
