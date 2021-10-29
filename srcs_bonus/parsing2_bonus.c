@@ -6,7 +6,7 @@
 /*   By: curtman <cdapurif@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 19:22:00 by curtman           #+#    #+#             */
-/*   Updated: 2021/10/27 16:23:34 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/10/29 15:27:11 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	parsing_error(char *line, t_info *info)
 
 void	check_parsing(t_info *info)
 {
+	if (!info->no_texture || !info->so_texture || \
+		!info->we_texture || !info->ea_texture)
+		parsing_error(NULL, info);
 	if (!info->no_texture->texture || !info->so_texture->texture || \
 		!info->we_texture->texture || !info->ea_texture->texture)
 		parsing_error(NULL, info);
