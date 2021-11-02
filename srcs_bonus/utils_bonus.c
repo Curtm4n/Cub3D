@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 22:39:07 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/27 16:25:54 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 15:07:24 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_ray	*init_rays(t_info *info)
 
 	rays = ft_calloc(info->num_rays, sizeof(t_ray));
 	if (!rays)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "problem initializing rays struct\n");
 	return (rays);
 }
 

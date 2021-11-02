@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 21:12:15 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/28 17:34:55 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:26:07 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_limits(t_info *info, char **map, int x, int y)
 		map[y][x] == '_')
 	{
 		free(map);
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "map open\n");
 	}
 }
 

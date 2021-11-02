@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 19:01:53 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/13 19:04:53 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:46:41 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**create_strs_tab(t_info *info)
 	size = ft_lstsize(info->map_ptr);
 	map = malloc(sizeof(char *) * (size + 1));
 	if (!map)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "error allocating the map\n");
 	map[size] = 0;
 	ptr = info->map_ptr;
 	size = 0;
@@ -104,8 +104,9 @@ int	find_pos(char *str, t_info *info, int ret)
 		if (str[i] == 'N' || str[i] == 'E' || str[i] == 'W' || str[i] == 'S')
 		{
 			if (info->orientation)
-				parsing_error(NULL, info);
+				parsing_error(NULL, info, "there must be only one player\n");
 			info->orientation = str[i];
+			find_pos(str + i + 1, info, ret);
 			return (i);
 		}
 		i++;

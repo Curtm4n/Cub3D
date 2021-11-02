@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:10:49 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/27 16:22:16 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 15:08:14 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	**get_lines(t_info *info, char **map, int line_lenght)
 			while (i-- > 0)
 				free(map[i]);
 			free(map);
-			parsing_error(NULL, info);
+			parsing_error(NULL, info, "problem allocating map\n");
 		}
 		ft_memset(str, 32, line_lenght);
 		str[line_lenght] = '\0';
@@ -79,7 +79,7 @@ char	**create_map_matrix(t_info *info)
 	num_line = ft_lstsize(info->map_ptr);
 	map = malloc(sizeof(char *) * (num_line + 1));
 	if (!map)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "problem allocating map\n");
 	map[num_line] = 0;
 	line_lenght = find_max(info);
 	map = get_lines(info, map, line_lenght);

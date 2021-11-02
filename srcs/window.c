@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 21:39:09 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/20 23:39:07 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:23:15 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_player	*init_player(t_info *info)
 
 	p = ft_calloc(1, sizeof(t_player));
 	if (!p)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "problem allocating player struct\n");
 	p->x = info->px * info->tile_size + (info->tile_size / 2);
 	p->y = info->py * info->tile_size + (info->tile_size / 2);
 	p->width = 5;
@@ -84,7 +84,7 @@ void	init_window(t_info *info)
 	info->data = mlx_get_data_addr(info->image, &config[0], &config[1], \
 		&config[2]);
 	if (!info->window_ptr || !info->image || !info->data)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "problem initializing some mlx part\n");
 }
 
 void	ft_launch_game(t_info *info)

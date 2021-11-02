@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:41:02 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/28 18:56:45 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 15:09:02 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ unsigned char	get_color(char *line, t_info *info, int i)
 
 	color = ft_atoi(line + i);
 	if (color < 0 || color > 255)
-		parsing_error(line, info);
+		parsing_error(line, info, "color values must be 0-255\n");
 	return (color);
 }

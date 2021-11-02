@@ -6,7 +6,7 @@
 /*   By: curtman <cdapurif@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 18:05:32 by curtman           #+#    #+#             */
-/*   Updated: 2021/10/28 19:32:58 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 15:02:22 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ void	check_map(t_info *info)
 	line = -1;
 	pos_index = -1;
 	if (ft_lstsize(info->map_ptr) < 3)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "map too small\n");
 	ptr = info->map_ptr;
 	while (ptr)
 	{
 		if (pos_index == -1)
 			++line;
 		if (!ft_is_good_mapchar((char *)ptr->content))
-			parsing_error(NULL, info);
+			parsing_error(NULL, info, "map character invalid\n");
 		pos_index = find_pos((char *)ptr->content, info, pos_index);
 		ptr = ptr->next;
 	}
 	if (pos_index == -1)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "there should be a player in the map\n");
 	ff_check(info, pos_index, line);
 }
 
@@ -51,7 +51,7 @@ void	parsing_text(char *line, t_info *info)
 	begin[0] = line[0];
 	begin[1] = line[1];
 	if (line[1] == '\0')
-		parsing_error(line, info);
+		parsing_error(line, info, "texture line invalid\n");
 	if (begin[0] == 'N' && begin[1] == 'O')
 		info->no_texture = handle_text(info, info->no_texture, line);
 	else if (begin[0] == 'W' && begin[1] == 'E')
@@ -61,7 +61,7 @@ void	parsing_text(char *line, t_info *info)
 	else if (begin[0] == 'S' && begin[1] == 'O')
 		info->so_texture = handle_text(info, info->so_texture, line);
 	else
-		parsing_error(line, info);
+		parsing_error(line, info, "invalid texture identifier\n");
 }
 
 void	set_color(unsigned char color[4], unsigned char r, unsigned char g,
@@ -80,19 +80,19 @@ void	parsing_color(char *line, t_info *info)
 
 	i = 1;
 	if (line[i] == '\0')
-		parsing_error(line, info);
+		parsing_error(line, info, "invalid color line\n");
 	while (ft_iswhitespace(line[i]))
 		i++;
 	color[0] = get_color(line, info, i);
 	while (ft_isdigit(line[i]) || ft_iswhitespace(line[i]))
 		i++;
 	if (line[i] != ',')
-		parsing_error(line, info);
+		parsing_error(line, info, "color line incomplete\n");
 	color[1] = get_color(line, info, ++i);
 	while (ft_isdigit(line[i]) || ft_iswhitespace(line[i]))
 		i++;
 	if (line[i] != ',')
-		parsing_error(line, info);
+		parsing_error(line, info, "color line incomplete\n");
 	color[2] = get_color(line, info, ++i);
 	if (*line == 'C')
 		set_color(info->ceil, color[0], color[1], color[2]);

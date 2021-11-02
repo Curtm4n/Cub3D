@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 23:42:08 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/20 22:55:31 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:21:49 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_texture	*get_texture(char *file, t_info *info)
 
 	img = ft_calloc(1, sizeof(t_texture));
 	if (!img)
-		parsing_error(file, info);
+		parsing_error(file, info, "problem allocating texture struct\n");
 	i = 2;
 	while (file[i] && ft_iswhitespace(file[i]))
 		i++;

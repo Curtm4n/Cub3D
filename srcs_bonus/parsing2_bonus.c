@@ -6,7 +6,7 @@
 /*   By: curtman <cdapurif@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 19:22:00 by curtman           #+#    #+#             */
-/*   Updated: 2021/10/29 15:27:11 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:57:19 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ void	free_info(t_info *info)
 	free(info);
 }
 
-void	parsing_error(char *line, t_info *info)
+void	parsing_error(char *line, t_info *info, char *error)
 {
 	if (line)
 		free(line);
 	free_info(info);
 	ft_putstr_fd("Error\n", 2);
+	if (error)
+		ft_putstr_fd(error, 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -51,12 +53,12 @@ void	check_parsing(t_info *info)
 {
 	if (!info->no_texture || !info->so_texture || \
 		!info->we_texture || !info->ea_texture)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "problem creating texture struct\n");
 	if (!info->no_texture->texture || !info->so_texture->texture || \
 		!info->we_texture->texture || !info->ea_texture->texture)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "texture invalid or badly initialized\n");
 	if (!info->map_ptr)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "map not initialize\n");
 	check_map(info);
 }
 
@@ -74,6 +76,6 @@ void	handle_map_line(char *line, t_info *info)
 
 	new = ft_lstnew(ft_strdup(line));
 	if (!new || !(new->content))
-		parsing_error(line, info);
+		parsing_error(line, info, "map allocation problem\n");
 	ft_lstadd_back(&(info->map_ptr), new);
 }

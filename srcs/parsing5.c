@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 17:52:14 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/28 17:35:37 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:20:39 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ void	check_borders(t_info *info, char **map, int x, int y)
 	if (x - 1 < 0 || y - 1 < 0 || x + 1 == ft_strlen(map[y]) || map[y + 1] == 0)
 	{
 		free(map);
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "map open\n");
 	}
 	if (map[y][x - 1] == 32 || map[y][x + 1] == 32)
 	{
 		free(map);
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "map open\n");
 	}
 	if (x < ft_strlen(map[y - 1]) && map[y - 1][x] == 32)
 	{
 		free(map);
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "map open\n");
 	}
 	check_limits(info, map, x, y);
 }

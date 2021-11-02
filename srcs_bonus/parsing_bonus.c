@@ -6,7 +6,7 @@
 /*   By: curtman <cdapurif@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:51:51 by curtman           #+#    #+#             */
-/*   Updated: 2021/10/27 16:24:21 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:54:44 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	error_map_name(char *map, t_info *info)
 void	handle_line(char *line, t_info *info, int ret)
 {
 	if (info->map_start && *line == '\0' && ret == 1)
-		parsing_error(line, info);
+		parsing_error(line, info, "map should be last in the config file\n");
 	if (*line == '\0')
 		return ;
 	if (info->map_start && (!ft_isdigit(*line) && *line != 32))
-		parsing_error(line, info);
+		parsing_error(line, info, "map should be last in the config file\n");
 	if (ft_isdigit(*line) || *line == 32)
 	{
 		info->map_start = 1;
@@ -54,7 +54,7 @@ void	read_file(int fd, t_info *info)
 
 	info->mlx_ptr = mlx_init();
 	if (!info->mlx_ptr)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "problem initializing the mlx\n");
 	while (1)
 	{
 		ret = get_next_line(fd, &line);

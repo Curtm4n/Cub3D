@@ -6,7 +6,7 @@
 /*   By: cdapurif <cdapurif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:37:49 by cdapurif          #+#    #+#             */
-/*   Updated: 2021/10/26 17:48:24 by cdapurif         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:30:08 by cdapurif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_wall(t_info *info, int wall_height, int x)
 	data.bottom_pixel = find_bottom_pixel(info, wall_height);
 	data.text = find_good_texture(info, x);
 	if (!data.text)
-		parsing_error(NULL, info);
+		parsing_error(NULL, info, "problem finding good texture\n");
 	data.text_offset_x = find_text_offset_x(info, data.text, x);
 	place_texture(info, data, wall_height, x);
 }
